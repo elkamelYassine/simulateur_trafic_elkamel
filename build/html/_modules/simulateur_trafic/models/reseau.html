@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>simulateur_trafic.models.reseau &#8212; simulateur_traffic 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for simulateur_trafic.models.reseau</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+
+<div class="viewcode-block" id="ReseauRoutier">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ReseauRoutier</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Représente l&#39;ensemble du réseau routier avec toutes les routes et véhicules.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Réseau Principal&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialise un nouveau réseau routier.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            nom: Nom du réseau</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Route&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Dictionnaire nom -&gt; Route</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vehicules</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Tous les véhicules du réseau</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temps_ecoule</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Temps total écoulé en minutes</span>
+        
+<div class="viewcode-block" id="ReseauRoutier.ajouter_route">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.ajouter_route">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ajouter_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ajoute une route au réseau.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            route: La route à ajouter</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">route</span><span class="o">.</span><span class="n">nom</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="n">route</span><span class="o">.</span><span class="n">nom</span><span class="p">]</span> <span class="o">=</span> <span class="n">route</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.retirer_route">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.retirer_route">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">retirer_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom_route</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retire une route du réseau.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            nom_route: Nom de la route à retirer</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            True si le retrait a réussi, False sinon</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">nom_route</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">:</span>
+            <span class="n">route</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="n">nom_route</span><span class="p">]</span>
+            <span class="c1"># Retirer tous les véhicules de cette route</span>
+            <span class="k">for</span> <span class="n">vehicule</span> <span class="ow">in</span> <span class="n">route</span><span class="o">.</span><span class="n">vehicules</span><span class="p">[:]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">retirer_vehicule</span><span class="p">(</span><span class="n">vehicule</span><span class="p">)</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="n">nom_route</span><span class="p">]</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.obtenir_route">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.obtenir_route">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtenir_route</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom_route</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Récupère une route par son nom.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            nom_route: Nom de la route</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            La route correspondante ou None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">nom_route</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.connecter_routes">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.connecter_routes">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">connecter_routes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom_route1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">nom_route2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Connecte deux routes (crée une intersection).</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            nom_route1: Nom de la première route</span>
+<span class="sd">            nom_route2: Nom de la route suivante</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            True si la connexion a réussi, False sinon</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">route1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtenir_route</span><span class="p">(</span><span class="n">nom_route1</span><span class="p">)</span>
+        <span class="n">route2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtenir_route</span><span class="p">(</span><span class="n">nom_route2</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">route1</span> <span class="ow">and</span> <span class="n">route2</span><span class="p">:</span>
+            <span class="n">route1</span><span class="o">.</span><span class="n">connecter_route</span><span class="p">(</span><span class="n">route2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.ajouter_vehicule">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.ajouter_vehicule">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ajouter_vehicule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vehicule</span><span class="p">,</span> <span class="n">nom_route</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ajoute un véhicule au réseau.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            vehicule: Le véhicule à ajouter</span>
+<span class="sd">            nom_route: Nom de la route de départ (optionnel)</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            True si l&#39;ajout a réussi, False sinon</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">vehicule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicules</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">vehicules</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vehicule</span><span class="p">)</span>
+        
+        <span class="c1"># Placer le véhicule sur une route si spécifiée</span>
+        <span class="k">if</span> <span class="n">nom_route</span><span class="p">:</span>
+            <span class="n">route</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtenir_route</span><span class="p">(</span><span class="n">nom_route</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">route</span><span class="p">:</span>
+                <span class="n">route</span><span class="o">.</span><span class="n">ajouter_vehicule</span><span class="p">(</span><span class="n">vehicule</span><span class="p">)</span>
+                <span class="n">vehicule</span><span class="o">.</span><span class="n">route_actuelle</span> <span class="o">=</span> <span class="n">route</span>
+        
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.retirer_vehicule">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.retirer_vehicule">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">retirer_vehicule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vehicule</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retire un véhicule du réseau.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            vehicule: Le véhicule à retirer</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            True si le retrait a réussi, False sinon</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">vehicule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicules</span><span class="p">:</span>
+            <span class="c1"># Retirer de la route actuelle</span>
+            <span class="k">if</span> <span class="n">vehicule</span><span class="o">.</span><span class="n">route_actuelle</span><span class="p">:</span>
+                <span class="n">vehicule</span><span class="o">.</span><span class="n">route_actuelle</span><span class="o">.</span><span class="n">retirer_vehicule</span><span class="p">(</span><span class="n">vehicule</span><span class="p">)</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">vehicules</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">vehicule</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.mettre_a_jour">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.mettre_a_jour">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mettre_a_jour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Met à jour l&#39;état de tout le réseau pour un pas de temps.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            delta_t: Intervalle de temps en minutes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Mettre à jour toutes les routes</span>
+        <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">route</span><span class="o">.</span><span class="n">mettre_a_jour_vehicules</span><span class="p">(</span><span class="n">delta_t</span><span class="p">)</span>
+        
+        <span class="c1"># Gérer les véhicules arrivés à la fin des routes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gerer_transitions_vehicules</span><span class="p">()</span>
+        
+        <span class="c1"># Incrémenter le temps écoulé</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temps_ecoule</span> <span class="o">+=</span> <span class="n">delta_t</span></div>
+
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_gerer_transitions_vehicules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gère les véhicules qui ont atteint la fin de leur route.</span>
+<span class="sd">        Ils peuvent soit changer de route, soit quitter le réseau.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">vehicules_arrives</span> <span class="o">=</span> <span class="n">route</span><span class="o">.</span><span class="n">retirer_vehicules_arrives</span><span class="p">()</span>
+            
+            <span class="k">for</span> <span class="n">vehicule</span> <span class="ow">in</span> <span class="n">vehicules_arrives</span><span class="p">:</span>
+                <span class="c1"># Si la route a des routes suivantes, choisir une au hasard</span>
+                <span class="k">if</span> <span class="n">route</span><span class="o">.</span><span class="n">routes_suivantes</span><span class="p">:</span>
+                    <span class="n">nouvelle_route</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">route</span><span class="o">.</span><span class="n">routes_suivantes</span><span class="p">)</span>
+                    <span class="n">vehicule</span><span class="o">.</span><span class="n">changer_de_route</span><span class="p">(</span><span class="n">nouvelle_route</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Sinon, retirer le véhicule du réseau</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">retirer_vehicule</span><span class="p">(</span><span class="n">vehicule</span><span class="p">)</span>
+    
+<div class="viewcode-block" id="ReseauRoutier.obtenir_nombre_vehicules">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.obtenir_nombre_vehicules">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtenir_nombre_vehicules</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne le nombre total de véhicules dans le réseau.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vehicules</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.obtenir_vitesse_moyenne_reseau">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.obtenir_vitesse_moyenne_reseau">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtenir_vitesse_moyenne_reseau</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calcule la vitesse moyenne de tous les véhicules du réseau.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Vitesse moyenne en km/h</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">vehicules_actifs</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicules</span> <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">route_actuelle</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">vehicules_actifs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">vitesse</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vehicules_actifs</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">vehicules_actifs</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.obtenir_routes_congestionnees">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.obtenir_routes_congestionnees">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtenir_routes_congestionnees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seuil_densite</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">20.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retourne la liste des routes congestionnées.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            seuil_densite: Seuil de densité pour la congestion</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Liste des routes congestionnées</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">route</span> <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> 
+                <span class="k">if</span> <span class="n">route</span><span class="o">.</span><span class="n">est_congestionne</span><span class="p">(</span><span class="n">seuil_densite</span><span class="p">)]</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.obtenir_statistiques">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.obtenir_statistiques">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">obtenir_statistiques</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Génère des statistiques globales sur le réseau.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionnaire contenant les statistiques</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">routes_congestionnees</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtenir_routes_congestionnees</span><span class="p">()</span>
+        
+        <span class="n">stats</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;temps_ecoule&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">temps_ecoule</span><span class="p">,</span>
+            <span class="s2">&quot;nombre_routes&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">),</span>
+            <span class="s2">&quot;nombre_vehicules&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtenir_nombre_vehicules</span><span class="p">(),</span>
+            <span class="s2">&quot;vitesse_moyenne&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">obtenir_vitesse_moyenne_reseau</span><span class="p">(),</span>
+            <span class="s2">&quot;routes_congestionnees&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">routes_congestionnees</span><span class="p">),</span>
+            <span class="s2">&quot;taux_congestion&quot;</span><span class="p">:</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">routes_congestionnees</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> 
+                               <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span> <span class="k">else</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="p">}</span>
+        
+        <span class="c1"># Statistiques par route</span>
+        <span class="n">stats</span><span class="p">[</span><span class="s2">&quot;details_routes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">nom</span><span class="p">,</span> <span class="n">route</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">stats</span><span class="p">[</span><span class="s2">&quot;details_routes&quot;</span><span class="p">][</span><span class="n">nom</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;nombre_vehicules&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">route</span><span class="o">.</span><span class="n">vehicules</span><span class="p">),</span>
+                <span class="s2">&quot;densite&quot;</span><span class="p">:</span> <span class="n">route</span><span class="o">.</span><span class="n">obtenir_densite</span><span class="p">(),</span>
+                <span class="s2">&quot;vitesse_moyenne&quot;</span><span class="p">:</span> <span class="n">route</span><span class="o">.</span><span class="n">obtenir_vitesse_moyenne</span><span class="p">(),</span>
+                <span class="s2">&quot;congestionne&quot;</span><span class="p">:</span> <span class="n">route</span><span class="o">.</span><span class="n">est_congestionne</span><span class="p">()</span>
+            <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="n">stats</span></div>
+
+    
+<div class="viewcode-block" id="ReseauRoutier.reinitialiser">
+<a class="viewcode-back" href="../../../modules/models.html#simulateur_trafic.models.reseau.ReseauRoutier.reinitialiser">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reinitialiser</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Réinitialise le réseau (retire tous les véhicules).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">vehicule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">vehicules</span><span class="p">[:]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">retirer_vehicule</span><span class="p">(</span><span class="n">vehicule</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">temps_ecoule</span> <span class="o">=</span> <span class="mf">0.0</span></div>
+
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ReseauRoutier(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">)</span><span class="si">}</span><span class="s2"> routes, &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">obtenir_nombre_vehicules</span><span class="p">()</span><span class="si">}</span><span class="s2"> véhicules)&quot;</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">)</span><span class="si">}</span><span class="s2"> routes</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">obtenir_nombre_vehicules</span><span class="p">()</span><span class="si">}</span><span class="s2"> véhicules</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;  - Vitesse moyenne: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">obtenir_vitesse_moyenne_reseau</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> km/h</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;  - Temps écoulé: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">temps_ecoule</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">simulateur_traffic</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Documentation des Modules:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/core.html">Modules Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/models.html">Modules Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/inputOutput.html">Modules Input/Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Référence API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/simulateur_trafic.core.html">simulateur_trafic.core package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/simulateur_trafic.models.html">simulateur_trafic.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/simulateur_trafic.inputOutput.html">simulateur_trafic.inputOutput package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Yassine El Kamel.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

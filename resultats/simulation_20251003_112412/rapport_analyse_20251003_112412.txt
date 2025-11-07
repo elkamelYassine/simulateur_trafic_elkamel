@@ -1,0 +1,60 @@
+================================================================================
+                         RAPPORT D'ANALYSE DE SIMULATION
+================================================================================
+
+Date de génération: 2025-10-03 11:24:12
+
+RÉSUMÉ GÉNÉRAL
+--------------------------------------------------------------------------------
+Nombre de tours simulés: 30
+Durée totale: 150 minutes
+Vitesse moyenne: 42.00 km/h
+Vitesse médiane: 42.00 km/h
+Écart-type vitesse: 2.00 km/h
+Score d'efficacité: 85.0/100
+
+ANALYSE DE CONGESTION
+--------------------------------------------------------------------------------
+Taux de congestion moyen: 12.00%
+
+Routes fréquemment congestionnées:
+  • A1: 15 tours (50.0%)
+  • B2: 15 tours (50.0%)
+
+Heures de pointe détectées: 10 périodes
+  • Tour 2: 14.0% de congestion
+  • Tour 5: 14.0% de congestion
+  • Tour 8: 14.0% de congestion
+  • Tour 11: 14.0% de congestion
+  • Tour 14: 14.0% de congestion
+
+ÉVOLUTION DES VÉHICULES
+--------------------------------------------------------------------------------
+Nombre initial: 202
+Nombre final: 260
+Maximum: 260
+Minimum: 202
+Moyenne: 231.0
+
+DENSITÉ DU TRAFIC
+--------------------------------------------------------------------------------
+Densité moyenne: 17.75 véhicules/km
+Densité maximale: 25.00 véhicules/km
+Densité minimale: 10.50 véhicules/km
+
+STATISTIQUES PAR ROUTE
+--------------------------------------------------------------------------------
+Route: A1
+  - Vitesse moyenne: 36.00 km/h
+  - Densité moyenne: 17.75 véhicules/km
+  - Taux de congestion: 50.00%
+
+Route: B2
+  - Vitesse moyenne: 36.00 km/h
+  - Densité moyenne: 17.75 véhicules/km
+  - Taux de congestion: 50.00%
+
+AUTRES INFORMATIONS
+--------------------------------------------------------------------------------
+Note: Simulation générée automatiquement.
+

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "simulateur-trafic-elkamel"
+version = "0.1.0"
+description = "Simulateur de trafic routier avec export de résultats et visualisations"
+authors = [
+  { name = "Yassine ELkamel" }
+]
+requires-python = ">=3.8"
+keywords = ["trafic", "simulation", "transport", "visualisation"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Operating System :: OS Independent",
+]
+# Le noyau n'a pas de dépendances externes obligatoires
+dependencies = []
+
+[project.optional-dependencies]
+# Visualisation et analyses graphiques (utilisé par simulateur_trafic/inputOutput/affichage.py)
+viz = [
+  "numpy>=1.24",
+  "matplotlib>=3.7",
+]
+# Documentation (facultatif)
+docs = [
+  "sphinx>=7.0",
+]
+
+[project.scripts]
+simulateur-trafic = "simulateur_trafic.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["simulateur_trafic"]
+

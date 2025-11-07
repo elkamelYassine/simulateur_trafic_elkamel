@@ -1,0 +1,669 @@
+{
+  "metadata": {
+    "date_export": "2025-10-09T21:54:47.288371",
+    "nombre_tours": 30,
+    "duree_simulation": 150
+  },
+  "historique": [
+    {
+      "tour": 1,
+      "temps_ecoule": 5,
+      "nombre_vehicules": 202,
+      "vitesse_moyenne": 41,
+      "taux_congestion": 12,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 21,
+          "densite": 10.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 21,
+          "densite": 10.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 2,
+      "temps_ecoule": 10,
+      "nombre_vehicules": 204,
+      "vitesse_moyenne": 42,
+      "taux_congestion": 14,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 22,
+          "densite": 11.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 22,
+          "densite": 11.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 3,
+      "temps_ecoule": 15,
+      "nombre_vehicules": 206,
+      "vitesse_moyenne": 43,
+      "taux_congestion": 10,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 23,
+          "densite": 11.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 23,
+          "densite": 11.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 4,
+      "temps_ecoule": 20,
+      "nombre_vehicules": 208,
+      "vitesse_moyenne": 44,
+      "taux_congestion": 12,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 24,
+          "densite": 12.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 24,
+          "densite": 12.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 5,
+      "temps_ecoule": 25,
+      "nombre_vehicules": 210,
+      "vitesse_moyenne": 40,
+      "taux_congestion": 14,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 25,
+          "densite": 12.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 25,
+          "densite": 12.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 6,
+      "temps_ecoule": 30,
+      "nombre_vehicules": 212,
+      "vitesse_moyenne": 41,
+      "taux_congestion": 10,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 26,
+          "densite": 13.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 26,
+          "densite": 13.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 7,
+      "temps_ecoule": 35,
+      "nombre_vehicules": 214,
+      "vitesse_moyenne": 42,
+      "taux_congestion": 12,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 27,
+          "densite": 13.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 27,
+          "densite": 13.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 8,
+      "temps_ecoule": 40,
+      "nombre_vehicules": 216,
+      "vitesse_moyenne": 43,
+      "taux_congestion": 14,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 28,
+          "densite": 14.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 28,
+          "densite": 14.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 9,
+      "temps_ecoule": 45,
+      "nombre_vehicules": 218,
+      "vitesse_moyenne": 44,
+      "taux_congestion": 10,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 29,
+          "densite": 14.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 29,
+          "densite": 14.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 10,
+      "temps_ecoule": 50,
+      "nombre_vehicules": 220,
+      "vitesse_moyenne": 40,
+      "taux_congestion": 12,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 30,
+          "densite": 15.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 30,
+          "densite": 15.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 11,
+      "temps_ecoule": 55,
+      "nombre_vehicules": 222,
+      "vitesse_moyenne": 41,
+      "taux_congestion": 14,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 31,
+          "densite": 15.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 31,
+          "densite": 15.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 12,
+      "temps_ecoule": 60,
+      "nombre_vehicules": 224,
+      "vitesse_moyenne": 42,
+      "taux_congestion": 10,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 32,
+          "densite": 16.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 32,
+          "densite": 16.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 13,
+      "temps_ecoule": 65,
+      "nombre_vehicules": 226,
+      "vitesse_moyenne": 43,
+      "taux_congestion": 12,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 33,
+          "densite": 16.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 33,
+          "densite": 16.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 14,
+      "temps_ecoule": 70,
+      "nombre_vehicules": 228,
+      "vitesse_moyenne": 44,
+      "taux_congestion": 14,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 34,
+          "densite": 17.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 34,
+          "densite": 17.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 15,
+      "temps_ecoule": 75,
+      "nombre_vehicules": 230,
+      "vitesse_moyenne": 40,
+      "taux_congestion": 10,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 35,
+          "densite": 17.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 35,
+          "densite": 17.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 16,
+      "temps_ecoule": 80,
+      "nombre_vehicules": 232,
+      "vitesse_moyenne": 41,
+      "taux_congestion": 12,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 36,
+          "densite": 18.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 36,
+          "densite": 18.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 17,
+      "temps_ecoule": 85,
+      "nombre_vehicules": 234,
+      "vitesse_moyenne": 42,
+      "taux_congestion": 14,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 37,
+          "densite": 18.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 37,
+          "densite": 18.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 18,
+      "temps_ecoule": 90,
+      "nombre_vehicules": 236,
+      "vitesse_moyenne": 43,
+      "taux_congestion": 10,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 38,
+          "densite": 19.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 38,
+          "densite": 19.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 19,
+      "temps_ecoule": 95,
+      "nombre_vehicules": 238,
+      "vitesse_moyenne": 44,
+      "taux_congestion": 12,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 39,
+          "densite": 19.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 39,
+          "densite": 19.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 20,
+      "temps_ecoule": 100,
+      "nombre_vehicules": 240,
+      "vitesse_moyenne": 40,
+      "taux_congestion": 14,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 40,
+          "densite": 20.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 40,
+          "densite": 20.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 21,
+      "temps_ecoule": 105,
+      "nombre_vehicules": 242,
+      "vitesse_moyenne": 41,
+      "taux_congestion": 10,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 41,
+          "densite": 20.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 41,
+          "densite": 20.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 22,
+      "temps_ecoule": 110,
+      "nombre_vehicules": 244,
+      "vitesse_moyenne": 42,
+      "taux_congestion": 12,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 42,
+          "densite": 21.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 42,
+          "densite": 21.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 23,
+      "temps_ecoule": 115,
+      "nombre_vehicules": 246,
+      "vitesse_moyenne": 43,
+      "taux_congestion": 14,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 43,
+          "densite": 21.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 43,
+          "densite": 21.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 24,
+      "temps_ecoule": 120,
+      "nombre_vehicules": 248,
+      "vitesse_moyenne": 44,
+      "taux_congestion": 10,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 44,
+          "densite": 22.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 44,
+          "densite": 22.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 25,
+      "temps_ecoule": 125,
+      "nombre_vehicules": 250,
+      "vitesse_moyenne": 40,
+      "taux_congestion": 12,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 45,
+          "densite": 22.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 45,
+          "densite": 22.5,
+          "vitesse_moyenne": 36,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 26,
+      "temps_ecoule": 130,
+      "nombre_vehicules": 252,
+      "vitesse_moyenne": 41,
+      "taux_congestion": 14,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 46,
+          "densite": 23.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 46,
+          "densite": 23.0,
+          "vitesse_moyenne": 37,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 27,
+      "temps_ecoule": 135,
+      "nombre_vehicules": 254,
+      "vitesse_moyenne": 42,
+      "taux_congestion": 10,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 47,
+          "densite": 23.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 47,
+          "densite": 23.5,
+          "vitesse_moyenne": 35,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 28,
+      "temps_ecoule": 140,
+      "nombre_vehicules": 256,
+      "vitesse_moyenne": 43,
+      "taux_congestion": 12,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 48,
+          "densite": 24.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 48,
+          "densite": 24.0,
+          "vitesse_moyenne": 36,
+          "congestionne": true
+        }
+      }
+    },
+    {
+      "tour": 29,
+      "temps_ecoule": 145,
+      "nombre_vehicules": 258,
+      "vitesse_moyenne": 44,
+      "taux_congestion": 14,
+      "routes_congestionnees": 2,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 49,
+          "densite": 24.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        },
+        "B2": {
+          "nombre_vehicules": 49,
+          "densite": 24.5,
+          "vitesse_moyenne": 37,
+          "congestionne": false
+        }
+      }
+    },
+    {
+      "tour": 30,
+      "temps_ecoule": 150,
+      "nombre_vehicules": 260,
+      "vitesse_moyenne": 40,
+      "taux_congestion": 10,
+      "routes_congestionnees": 1,
+      "details_routes": {
+        "A1": {
+          "nombre_vehicules": 50,
+          "densite": 25.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        },
+        "B2": {
+          "nombre_vehicules": 50,
+          "densite": 25.0,
+          "vitesse_moyenne": 35,
+          "congestionne": true
+        }
+      }
+    }
+  ]
+}

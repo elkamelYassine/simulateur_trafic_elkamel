@@ -1,0 +1,13 @@
+Modules Input/Output
+====================
+
+.. automodule:: simulateur_trafic.inputOutput.affichage
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: simulateur_trafic.inputOutput.export
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

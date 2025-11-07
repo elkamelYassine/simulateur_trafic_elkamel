@@ -1,0 +1,17 @@
+simulateur_trafic.inputOutput package
+=====================================
+
+.. automodule:: simulateur_trafic.inputOutput
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   simulateur_trafic.inputOutput.affichage
+   simulateur_trafic.inputOutput.export
+

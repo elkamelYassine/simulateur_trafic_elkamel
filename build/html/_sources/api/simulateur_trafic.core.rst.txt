@@ -1,0 +1,16 @@
+simulateur_trafic.core package
+==============================
+
+.. automodule:: simulateur_trafic.core
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   simulateur_trafic.core.analyseur
+   simulateur_trafic.core.simulateur

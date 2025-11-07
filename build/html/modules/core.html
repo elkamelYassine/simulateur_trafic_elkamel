@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modules Core &#8212; simulateur_traffic 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modules Models" href="models.html" />
+    <link rel="prev" title="Simulateur de Trafic Documentation" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-simulateur_trafic.core.simulateur">
+<span id="modules-core"></span><h1>Modules Core<a class="headerlink" href="#module-simulateur_trafic.core.simulateur" title="Link to this heading">¶</a></h1>
+<p>Module définissant la classe Simulateur pour gérer la simulation de trafic.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simulateur_trafic.core.simulateur.Simulateur">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulateur_trafic.core.simulateur.</span></span><span class="sig-name descname"><span class="pre">Simulateur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fichier_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reseau</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#simulateur_trafic.models.reseau.ReseauRoutier" title="simulateur_trafic.models.reseau.ReseauRoutier"><span class="pre">ReseauRoutier</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simulateur_trafic/core/simulateur.html#Simulateur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.simulateur.Simulateur" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe principale pour gérer la simulation du trafic routier.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.simulateur.Simulateur.ajouter_callback">
+<span class="sig-name descname"><span class="pre">ajouter_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fonction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/simulateur.html#Simulateur.ajouter_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.simulateur.Simulateur.ajouter_callback" title="Link to this definition">¶</a></dt>
+<dd><p>Ajoute une fonction à appeler à chaque tour de simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fonction</strong> – Fonction prenant en paramètre (tour, stats)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.simulateur.Simulateur.ajouter_vehicule_aleatoire">
+<span class="sig-name descname"><span class="pre">ajouter_vehicule_aleatoire</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">routes_possibles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="models.html#simulateur_trafic.models.vehicule.Vehicule" title="simulateur_trafic.models.vehicule.Vehicule"><span class="pre">Vehicule</span></a></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/simulateur.html#Simulateur.ajouter_vehicule_aleatoire"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.simulateur.Simulateur.ajouter_vehicule_aleatoire" title="Link to this definition">¶</a></dt>
+<dd><p>Ajoute un nouveau véhicule aléatoire dans le réseau.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>routes_possibles</strong> – Liste des routes où placer le véhicule</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Le véhicule créé</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.simulateur.Simulateur.charger_configuration">
+<span class="sig-name descname"><span class="pre">charger_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fichier_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/simulateur.html#Simulateur.charger_configuration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.simulateur.Simulateur.charger_configuration" title="Link to this definition">¶</a></dt>
+<dd><p>Charge la configuration du réseau depuis un fichier JSON.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fichier_config</strong> – Chemin vers le fichier JSON</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.simulateur.Simulateur.lancer_simulation">
+<span class="sig-name descname"><span class="pre">lancer_simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_tours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taux_arrivee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">afficher_progression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/simulateur.html#Simulateur.lancer_simulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.simulateur.Simulateur.lancer_simulation" title="Link to this definition">¶</a></dt>
+<dd><p>Lance la simulation pour un nombre donné de tours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_tours</strong> – Nombre de tours de simulation</p></li>
+<li><p><strong>delta_t</strong> – Pas de temps en minutes</p></li>
+<li><p><strong>taux_arrivee</strong> – Probabilité d’arrivée d’un nouveau véhicule par tour (0.0 à 1.0)</p></li>
+<li><p><strong>afficher_progression</strong> – Afficher les informations de progression</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.simulateur.Simulateur.obtenir_historique">
+<span class="sig-name descname"><span class="pre">obtenir_historique</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/simulateur.html#Simulateur.obtenir_historique"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.simulateur.Simulateur.obtenir_historique" title="Link to this definition">¶</a></dt>
+<dd><p>Retourne l’historique complet des statistiques.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste des statistiques par tour</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.simulateur.Simulateur.reinitialiser">
+<span class="sig-name descname"><span class="pre">reinitialiser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/simulateur.html#Simulateur.reinitialiser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.simulateur.Simulateur.reinitialiser" title="Link to this definition">¶</a></dt>
+<dd><p>Réinitialise la simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.simulateur.Simulateur.sauvegarder_configuration">
+<span class="sig-name descname"><span class="pre">sauvegarder_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fichier_sortie</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/simulateur.html#Simulateur.sauvegarder_configuration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.simulateur.Simulateur.sauvegarder_configuration" title="Link to this definition">¶</a></dt>
+<dd><p>Sauvegarde la configuration actuelle du réseau.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fichier_sortie</strong> – Chemin du fichier de sortie</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-simulateur_trafic.core.analyseur">Module définissant la classe Analyseur pour analyser les résultats de simulation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simulateur_trafic.core.analyseur.</span></span><span class="sig-name descname"><span class="pre">Analyseur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">historique_stats</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Analyse les données de simulation et génère des rapports statistiques.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.afficher_rapport_console">
+<span class="sig-name descname"><span class="pre">afficher_rapport_console</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.afficher_rapport_console"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.afficher_rapport_console" title="Link to this definition">¶</a></dt>
+<dd><p>Affiche un rapport formaté dans la console.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.analyser_densite_trafic">
+<span class="sig-name descname"><span class="pre">analyser_densite_trafic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.analyser_densite_trafic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.analyser_densite_trafic" title="Link to this definition">¶</a></dt>
+<dd><p>Analyse la densité du trafic par route.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire avec statistiques de densité par route</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.calculer_ecart_type_vitesse">
+<span class="sig-name descname"><span class="pre">calculer_ecart_type_vitesse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.calculer_ecart_type_vitesse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.calculer_ecart_type_vitesse" title="Link to this definition">¶</a></dt>
+<dd><p>Calcule l’écart-type des vitesses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Écart-type en km/h</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.calculer_efficacite_reseau">
+<span class="sig-name descname"><span class="pre">calculer_efficacite_reseau</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.calculer_efficacite_reseau"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.calculer_efficacite_reseau" title="Link to this definition">¶</a></dt>
+<dd><p>Calcule un score d’efficacité du réseau (0-100).
+Basé sur la vitesse moyenne et le taux de congestion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Score d’efficacité (0-100)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.calculer_temps_parcours_moyen">
+<span class="sig-name descname"><span class="pre">calculer_temps_parcours_moyen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.calculer_temps_parcours_moyen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.calculer_temps_parcours_moyen" title="Link to this definition">¶</a></dt>
+<dd><p>Calcule le temps de parcours moyen par route.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>temps_moyen_minutes}</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionnaire {nom_route</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.calculer_vitesse_mediane">
+<span class="sig-name descname"><span class="pre">calculer_vitesse_mediane</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.calculer_vitesse_mediane"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.calculer_vitesse_mediane" title="Link to this definition">¶</a></dt>
+<dd><p>Calcule la vitesse médiane sur toute la simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Vitesse médiane en km/h</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.calculer_vitesse_moyenne_globale">
+<span class="sig-name descname"><span class="pre">calculer_vitesse_moyenne_globale</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.calculer_vitesse_moyenne_globale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.calculer_vitesse_moyenne_globale" title="Link to this definition">¶</a></dt>
+<dd><p>Calcule la vitesse moyenne sur toute la simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Vitesse moyenne en km/h</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.comparer_routes">
+<span class="sig-name descname"><span class="pre">comparer_routes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.comparer_routes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.comparer_routes" title="Link to this definition">¶</a></dt>
+<dd><p>Compare les performances de toutes les routes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Liste de tuples (nom_route, statistiques) triée par performance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.detecter_heures_pointe">
+<span class="sig-name descname"><span class="pre">detecter_heures_pointe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fenetre</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.detecter_heures_pointe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.detecter_heures_pointe" title="Link to this definition">¶</a></dt>
+<dd><p>Détecte les périodes de forte congestion (heures de pointe).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fenetre</strong> – Taille de la fenêtre glissante en tours</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Liste de tuples (tour, taux_congestion_moyen)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.generer_rapport_complet">
+<span class="sig-name descname"><span class="pre">generer_rapport_complet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.generer_rapport_complet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.generer_rapport_complet" title="Link to this definition">¶</a></dt>
+<dd><p>Génère un rapport complet d’analyse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire contenant toutes les analyses</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simulateur_trafic.core.analyseur.Analyseur.identifier_zones_congestion">
+<span class="sig-name descname"><span class="pre">identifier_zones_congestion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seuil_tours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/simulateur_trafic/core/analyseur.html#Analyseur.identifier_zones_congestion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#simulateur_trafic.core.analyseur.Analyseur.identifier_zones_congestion" title="Link to this definition">¶</a></dt>
+<dd><p>Identifie les routes fréquemment congestionnées.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seuil_tours</strong> – Nombre minimum de tours congestionnés pour considérer une route</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>nombre_tours_congestionnés}</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionnaire {nom_route</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">simulateur_traffic</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Documentation des Modules:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modules Core</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulateur_trafic.core.simulateur.Simulateur"><code class="docutils literal notranslate"><span class="pre">Simulateur</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulateur_trafic.core.analyseur.Analyseur"><code class="docutils literal notranslate"><span class="pre">Analyseur</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Modules Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inputOutput.html">Modules Input/Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Référence API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/simulateur_trafic.core.html">simulateur_trafic.core package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/simulateur_trafic.models.html">simulateur_trafic.models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/simulateur_trafic.inputOutput.html">simulateur_trafic.inputOutput package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">Simulateur de Trafic Documentation</a></li>
+      <li>Next: <a href="models.html" title="next chapter">Modules Models</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Yassine El Kamel.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/modules/core.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
