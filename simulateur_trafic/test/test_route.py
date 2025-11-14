@@ -1,7 +1,7 @@
 import pytest
 from simulateur_trafic.models.route import Route
 from simulateur_trafic.models.vehicule import Vehicule
-
+from simulateur_trafic.models.feu_rouge import FeuRouge
 
 class TestRoute:
     """Tests pour la classe Route."""
@@ -50,3 +50,21 @@ class TestRoute:
         route_simple.mettre_a_jour_vehicules(delta_t=1.0)
 
         assert vehicule.position > position_initiale
+
+    def test_arret_au_feu_rouge(self):
+        """
+        Test qu'un véhicule s'arrête devant un feu rouge.
+        """
+        route = Route(nom="Route Test", longueur=2.0)
+
+        feu = FeuRouge(cycle=10)
+
+        route.ajouter_feu_rouge(feu, position=1.5)
+
+        vehicule = Vehicule(vitesse_initiale=50.0, position_initiale=1.4, route_actuelle=route)
+        route.ajouter_vehicule(vehicule)
+
+        assert feu.etat == "rouge"
+        route.update(dt=1.0)
+        assert vehicule.vitesse == 0.0
+        assert vehicule.position <= route.position_feu

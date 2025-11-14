@@ -26,6 +26,19 @@ class Route:
         self.nombre_voies = nombre_voies
         self.vehicules: List = []  # Liste des véhicules présents sur la route
         self.routes_suivantes: List['Route'] = []  # Routes accessibles depuis cette route
+        self.feu_rouge = None  # Feu rouge sur la route
+        self.position_feu = None  # Position du feu en km
+
+    def ajouter_feu_rouge(self, feu, position: Optional[float] = None) -> None:
+        """
+        Ajoute un feu rouge à la route.
+
+        Args:
+            feu: Instance de FeuRouge à ajouter
+            position: Position du feu sur la route en km (par défaut à la fin)
+        """
+        self.feu_rouge = feu
+        self.position_feu = position if position is not None else self.longueur
 
     def ajouter_vehicule(self, vehicule) -> bool:
         """
@@ -50,16 +63,16 @@ class Route:
             return True
 
         except ValueError as e:
-            print(f"Erreur lors de l’ajout du véhicule : {e}")
+            print(f"Erreur lors de l'ajout du véhicule : {e}")
             return False
 
     def retirer_vehicule(self, vehicule) -> bool:
         """
         Retire un véhicule de la route.
-        
+
         Args:
             vehicule: Le véhicule à retirer
-            
+
         Returns:
             True si le retrait a réussi, False sinon
         """
@@ -67,40 +80,67 @@ class Route:
             self.vehicules.remove(vehicule)
             return True
         return False
-    
+
     def mettre_a_jour_vehicules(self, delta_t: float) -> None:
         """
         Met à jour la position et la vitesse de tous les véhicules.
-        
+
         Args:
             delta_t: Intervalle de temps en minutes
         """
-        # Trier les véhicules par position (du plus avancé au moins avancé)
+        if self.feu_rouge is not None:
+            self.feu_rouge.avancer_temps(delta_t * 60)
+
         self.vehicules.sort(key=lambda v: v.position, reverse=True)
-        
-        # Mettre à jour chaque véhicule
+
         for i, vehicule in enumerate(self.vehicules):
-            # Trouver le véhicule devant (s'il existe)
             vehicule_devant = self.vehicules[i - 1] if i > 0 else None
-            
-            # Ajuster la vitesse en fonction du trafic
-            vehicule.ajuster_vitesse(vehicule_devant)
-            
-            # Faire avancer le véhicule
-            vehicule.avancer(delta_t)
-    
+
+            doit_arreter_au_feu = False
+            if self.feu_rouge is not None and self.position_feu is not None:
+                distance_securite = 0.01
+
+                if (self.feu_rouge.etat == "rouge" and
+                    vehicule.position < self.position_feu and
+                    (self.position_feu - vehicule.position) <= distance_securite + 0.1):
+                    doit_arreter_au_feu = True
+
+            if doit_arreter_au_feu:
+                vehicule.vitesse = 0.0
+                continue
+            else:
+                vehicule.ajuster_vitesse(vehicule_devant)
+
+                vehicule.avancer(delta_t)
+
+                if (self.feu_rouge is not None and
+                    self.position_feu is not None and
+                    self.feu_rouge.etat == "rouge" and
+                    vehicule.position > self.position_feu):
+                    vehicule.position = self.position_feu
+                    vehicule.vitesse = 0.0
+
+    def update(self, dt: float = 1.0) -> None:
+        """
+        Met à jour l'état de la route (alias pour mettre_a_jour_vehicules).
+
+        Args:
+            dt: Intervalle de temps en minutes
+        """
+        self.mettre_a_jour_vehicules(dt)
+
     def retirer_vehicules_arrives(self) -> List:
         """
         Retire les véhicules qui ont atteint la fin de la route.
-        
+
         Returns:
             Liste des véhicules arrivés
         """
         vehicules_arrives = [v for v in self.vehicules if v.est_arrive()]
-        
+
         for vehicule in vehicules_arrives:
             self.retirer_vehicule(vehicule)
-        
+
         return vehicules_arrives
 
     def connecter_routes(self, nom_route1: str, nom_route2: str) -> bool:
@@ -138,56 +178,58 @@ class Route:
     def obtenir_densite(self) -> float:
         """
         Calcule la densité de véhicules sur la route.
-        
+
         Returns:
             Nombre de véhicules par kilomètre
         """
         if self.longueur == 0:
             return 0.0
         return len(self.vehicules) / self.longueur
-    
+
     def obtenir_vitesse_moyenne(self) -> float:
         """
         Calcule la vitesse moyenne des véhicules sur la route.
-        
+
         Returns:
             Vitesse moyenne en km/h, 0 si aucun véhicule
         """
         if not self.vehicules:
             return 0.0
         return sum(v.vitesse for v in self.vehicules) / len(self.vehicules)
-    
+
     def est_congestionne(self, seuil_densite: float = 20.0) -> bool:
         """
         Détermine si la route est congestionnée.
-        
+
         Args:
             seuil_densite: Seuil de densité pour considérer une congestion (véhicules/km)
-            
+
         Returns:
             True si la route est congestionnée
         """
         return self.obtenir_densite() > seuil_densite
-    
+
     def obtenir_capacite_restante(self, capacite_max_par_voie: int = 30) -> int:
         """
         Calcule le nombre de véhicules supplémentaires que la route peut accueillir.
-        
+
         Args:
             capacite_max_par_voie: Capacité maximale par voie
-            
+
         Returns:
             Nombre de places disponibles
         """
         capacite_totale = int(self.longueur * self.nombre_voies * capacite_max_par_voie)
         return max(0, capacite_totale - len(self.vehicules))
-    
+
     def __repr__(self) -> str:
+        feu_info = f", feu: {self.feu_rouge.etat}" if self.feu_rouge else ""
         return (f"Route({self.nom}, {self.longueur}km, "
-                f"{self.limite_vitesse}km/h, {len(self.vehicules)} véhicules)")
-    
+                f"{self.limite_vitesse}km/h, {len(self.vehicules)} véhicules{feu_info})")
+
     def __str__(self) -> str:
+        feu_info = f", feu {self.feu_rouge.etat} à {self.position_feu}km" if self.feu_rouge else ""
         return (f"{self.nom} [{self.longueur}km, max {self.limite_vitesse}km/h] : "
                 f"{len(self.vehicules)} véhicules, "
                 f"densité: {self.obtenir_densite():.1f} véh/km, "
-                f"vitesse moy: {self.obtenir_vitesse_moyenne():.1f} km/h")
+                f"vitesse moy: {self.obtenir_vitesse_moyenne():.1f} km/h{feu_info}")
